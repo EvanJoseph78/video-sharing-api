@@ -3,8 +3,6 @@ import User from "../models/User.js";
 
 export const update = async (req, res, next) => {
   if (req.params.id === req.user.id) {
-    console.log("Passou Aqui!" + req.params.id);
-    console.log("Passou Aqui!" + req.user.id);
     try {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
@@ -22,8 +20,6 @@ export const update = async (req, res, next) => {
 
 export const deleteUser = async (req, res, next) => {
   if (req.params.id === req.user.id) {
-    console.log("Passou Aqui!" + req.params.id);
-    console.log("Passou Aqui!" + req.user.id);
     try {
       await User.findOneAndDelete(
         req.params.id,
@@ -49,7 +45,6 @@ export const getAllUsers = async (req, res, next) => {
 }
 
 export const subscribe = async (req, res, next) => {
-  console.log("Passou Aqui!");
   try {
     await User.findByIdAndUpdate(req.user.id, {
       $push: { subscribedUsers: req.params.id },

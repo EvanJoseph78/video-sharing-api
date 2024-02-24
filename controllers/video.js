@@ -77,8 +77,10 @@ export const addView = async (req, res, next) => {
 export const sub = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
-    const list = Promise.all(
-      subscribedChannels.map(channelId => {
+    console.log(user);
+    const subscribedChannels = user.subscribedUsers;
+    const list = await Promise.all(
+      subscribedChannels.map((channelId) => {
         return Video.find({ userId: channelId });
       })
     );

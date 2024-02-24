@@ -12,7 +12,7 @@ router.get("/find/:id", addVideo);
 router.get("/view/:id", addView);
 router.get("/trend", trend);
 router.get("/random", random);
-router.get("/sub", sub);
+router.get("/sub", verifyToken, sub);
 
 
 export default router;

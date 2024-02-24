@@ -97,7 +97,7 @@ export const dislike = async (req, res, next) => {
   const videoId = req.params.videoId;
   try {
     await Video.findByIdAndUpdate(videoId, {
-      $addToSet: { dislikes: id },
+      $addToSet: { dislikes: id },  //permite adicionar apenas um item único no array.
       $pull: { likes: id }
     });
     res.status(200).json("O video foi descurtido!");
